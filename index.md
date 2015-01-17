@@ -10,7 +10,8 @@ widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
 
-```{r eval=FALSE}
+
+```r
 fit <- lm(y ~ x1 + x2 + x3)
 summary(fit)
 ```
