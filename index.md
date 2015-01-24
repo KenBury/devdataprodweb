@@ -1,18 +1,17 @@
 ---
-title       : Kens Test
-subtitle    : 
-author      : 
+title       : Simulated class data with Kmeans analysis
+subtitle    : Coursera - Developing data products
+author      : Kenneth Bury
 job         : 
-framework   : html5slides   # {io2012, html5slides, shower, dzslides, ...}
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
 
+This is a test
 
-```r
-fit <- lm(y ~ x1 + x2 + x3)
-summary(fit)
-```
+---
 
+This is page 2
