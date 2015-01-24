@@ -1,0 +1,16 @@
+{
+    "contents" : "---\ntitle       : Simulated class data with Kmeans analysis\nsubtitle    : Coursera - Developing data products\nauthor      : Kenneth Bury\njob         : \nframework   : io2012        # {io2012, html5slides, shower, dzslides, ...}\nhighlighter : highlight.js  # {highlight.js, prettify, highlight}\nhitheme     : tomorrow      # \nwidgets     : []            # {mathjax, quiz, bootstrap}\nmode        : selfcontained # {standalone, draft}\n---\n\nThis is a test\n\n---\n\nThis is page 2\n",
+    "created" : 1422070766270.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "618622707",
+    "id" : "819EF532",
+    "lastKnownWriteTime" : 1422070718,
+    "path" : "~/GitHub/simukmeansweb/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}
