@@ -1,12 +1,12 @@
 {
     "contents" : "---\ntitle       : Kens Test\nsubtitle    : \nauthor      : \njob         : \nframework   : html5slides   # {io2012, html5slides, shower, dzslides, ...}\nhighlighter : highlight.js  # {highlight.js, prettify, highlight}\nhitheme     : tomorrow      # \nwidgets     : []            # {mathjax, quiz, bootstrap}\nmode        : selfcontained # {standalone, draft}\n---\n\n```{r eval=FALSE}\nfit <- lm(y ~ x1 + x2 + x3)\nsummary(fit)\n```\n\n",
-    "created" : 1421509599235.000,
+    "created" : 1422064791887.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
     "hash" : "2581252571",
-    "id" : "A6EFF84E",
-    "lastKnownWriteTime" : 1421510584,
+    "id" : "F5C7FD00",
+    "lastKnownWriteTime" : 1422068228,
     "path" : "~/GitHub/webtest/index.Rmd",
     "project_path" : "index.Rmd",
     "properties" : {
