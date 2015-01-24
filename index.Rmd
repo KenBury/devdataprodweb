@@ -10,4 +10,8 @@ widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
 
+This is a test
 
+---
+
+This is page 2
