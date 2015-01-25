@@ -1,3 +1,7 @@
 base
 devtools
 slidify
+plyr
+lattice
+ggplot2
+caret

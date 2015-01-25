@@ -1,5 +1,5 @@
 ---
-title       : Simulated class data with Kmeans analysis
+title       : Class ratio prediction
 subtitle    : Coursera - Developing data products
 author      : Kenneth Bury
 job         : 
@@ -9,9 +9,79 @@ hitheme     : tomorrow      #
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 ---
+## The problem
+ - This particular system maintains data for 'nodes' and management of the capacity is a challenge. There can be 100s to 10,000s of nodes producing data. 
+ - Predicting what the effect of adding more nodes to the system is a time consumming process. 
+ 
+## The theory
+- It is proposed that nodes belonging a certain class will have similar ratios and therefore it should be possible to determine the class predicted ratio from the collection of observed ratios within the class.
 
-This is a test
+## The potential result
+- The class predicted ratio can then be used to predict the effect on system capacity when adding nodes of the same class.
+- This simplifies the capacity planning effort by automating the modeling the nodes within a class.
+
+---
+## Using R and Shiny a demo was quickly built
+
+- The application simulates data that can be collected from the data management systems.
+- The simulated data contains node data collected over 3 intervals
+- The simulated data assumes that there is a correlation between the class of the node and the ratio parameter for the node.
+- The application allows for the adjustment of the number classes and the number of nodes.
+- The application then uses the data to predict what the node ratio parameter would be for a given class.
 
 ---
 
-This is page 3
+## The simulated data
+
+- The following is a sample of what the simulated data would look like. The data collected from the data management systems would be structured the same way.
+
+```{r block1, echo=FALSE,message=FALSE}
+library(plyr)
+library(caret)
+
+
+dfclass_id = data.frame (class_id = c("AA", "AB", "AC", "BA", "BB", "BC"), ratio = c(2.5, 3.0, 1.5, 2.0, 4.0, 2.2))
+
+no_class <- 4
+no_node <- 50
+
+        dfnode_id <- data.frame (node_id = paste0 (sample(LETTERS[1:10], replace = TRUE), seq(1:no_node)),
+                                 class_id = sample(sample(dfclass_id$class_id, size = no_class), size = no_node, replace = TRUE))
+        dfnode_id <- join(dfnode_id, dfclass_id, by='class_id', type='left', match='all')
+        colnames(dfnode_id)[which(colnames(dfnode_id) == 'ratio')] <- 'sample1'
+        dfnode_id <- join(dfnode_id, dfclass_id, by='class_id', type='left', match='all')
+        colnames(dfnode_id)[which(colnames(dfnode_id) == 'ratio')] <- 'sample2'
+        dfnode_id <- join(dfnode_id, dfclass_id, by='class_id', type='left', match='all')
+        colnames(dfnode_id)[which(colnames(dfnode_id) == 'ratio')] <- 'sample3'
+        dfnode_id$sample1 <- with( dfnode_id , jitter(sample1) )
+        dfnode_id$sample2 <- with( dfnode_id , jitter(sample2) )
+        dfnode_id$sample3 <- with( dfnode_id , jitter(sample3) )
+        dfnode_id$ratio <- with( dfnode_id , (sample1+sample2+sample3)/3.00 )
+head(dfnode_id, n = 10)
+```
+
+---
+## The class ratio parameter prediction
+
+- The following is a sample of what a plot of the simulated data with class predicted ratios would look like.
+
+```{r, echo=FALSE, fig.width=8, fig.height=5}
+dfnode_id <- droplevels(dfnode_id[,c("node_id","class_id","ratio")])
+modelFit <- train(ratio~class_id, data=dfnode_id, method="lm")
+dftest <- data.frame(class_id = levels(dfnode_id$class_id))
+pointsFit <- data.frame (ratio = predict(modelFit, dftest) , class_id = levels(dfnode_id$class_id))
+plot <- ggplot(dfnode_id, aes(class_id, ratio, color=class_id)) + geom_point(alpha = 1/2)
+plot  + geom_point(data=pointsFit, aes(class_id, ratio), colour='black', size = 10, shape = 4,alpha = 1)
+
+```
+
+---
+## Next steps
+
+- Review the demostration application.
+- Begin the collection process of actual data.
+- Adjust the application code to process the collected data.
+- Review the results to see if there an actual correlation between the class and the node ratio parameter.
+- If there is a correlation: Adjust the application to add a feature to add a number of nodes of a certain class and show the effect on capacity
+- If there is no correlation: Review the results and see if there are other parameters contributing to the node ratio.
+        

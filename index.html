@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Simulated class data with Kmeans analysis</title>
+  <title>Class ratio prediction</title>
   <meta charset="utf-8">
-  <meta name="description" content="Simulated class data with Kmeans analysis">
+  <meta name="description" content="Class ratio prediction">
   <meta name="author" content="Kenneth Bury">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,7 +31,7 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Simulated class data with Kmeans analysis</h1>
+    <h1>Class ratio prediction</h1>
     <h2>Coursera - Developing data products</h2>
     <p>Kenneth Bury<br/></p>
   </hgroup>
@@ -41,16 +41,103 @@
 
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The problem</h2>
+  </hgroup>
   <article data-timings="">
-    <p>This is a test</p>
+    <ul>
+<li>This particular system maintains data for &#39;nodes&#39; and management of the capacity is a challenge. There can be 100s to 10,000s of nodes producing data. </li>
+<li>Predicting what the effect of adding more nodes to the system is a time consumming process. </li>
+</ul>
+
+<h2>The theory</h2>
+
+<ul>
+<li>It is proposed that nodes belonging a certain class will have similar ratios and therefore it should be possible to determine the class predicted ratio from the collection of observed ratios within the class.</li>
+</ul>
+
+<h2>The potential result</h2>
+
+<ul>
+<li>The class predicted ratio can then be used to predict the effect on system capacity when adding nodes of the same class.</li>
+<li>This simplifies the capacity planning effort by automating the modeling the nodes within a class.</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Using R and Shiny a demo was quickly built</h2>
+  </hgroup>
   <article data-timings="">
-    <p>This is page 3</p>
+    <ul>
+<li>The application simulates data that can be collected from the data management systems.</li>
+<li>The simulated data contains node data collected over 3 intervals</li>
+<li>The simulated data assumes that there is a correlation between the class of the node and the ratio parameter for the node.</li>
+<li>The application allows for the adjustment of the number classes and the number of nodes.</li>
+<li>The application then uses the data to predict what the node ratio parameter would be for a given class.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The simulated data</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The following is a sample of what the simulated data would look like. The data collected from the data management systems would be structured the same way.</li>
+</ul>
+
+<pre><code>##    node_id class_id  sample1  sample2  sample3    ratio
+## 1       D1       AC 1.551656 1.505820 1.522404 1.526627
+## 2       A2       AC 1.453785 1.541773 1.440059 1.478539
+## 3       J3       AA 2.480245 2.555586 2.527513 2.521114
+## 4       J4       BB 3.962999 3.982526 3.963394 3.969640
+## 5       B5       BB 4.048059 4.013969 3.958515 4.006848
+## 6       C6       BC 2.160551 2.246669 2.203668 2.203629
+## 7       C7       AC 1.463864 1.504574 1.488219 1.485552
+## 8       A8       AC 1.509418 1.452675 1.508332 1.490142
+## 9       I9       BC 2.165909 2.188008 2.233187 2.195701
+## 10     G10       BB 3.950622 4.055214 3.971529 3.992455
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>The class ratio parameter prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The following is a sample of what a plot of the simulated data with class predicted ratios would look like.</li>
+</ul>
+
+<p><img src="assets/fig/unnamed-chunk-1-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Next steps</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Review the demostration application.</li>
+<li>Begin the collection process of actual data.</li>
+<li>Adjust the application code to process the collected data.</li>
+<li>Review the results to see if there an actual correlation between the class and the node ratio parameter.</li>
+<li>If there is a correlation: Adjust the application to add a feature to add a number of nodes of a certain class and show the effect on capacity</li>
+<li>If there is no correlation: Review the results and see if there are other parameters contributing to the node ratio.</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -62,14 +149,32 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title=''>
+        data-slide=1 title='The problem'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title=''>
+        data-slide=2 title='Using R and Shiny a demo was quickly built'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The simulated data'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='The class ratio parameter prediction'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Next steps'>
+         5
       </a>
     </li>
   </ul>
